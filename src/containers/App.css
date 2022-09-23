@@ -1,0 +1,27 @@
+/* Global Stylings, not scopped to just the app */
+.App {
+  text-align: center;
+}
+
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.button {
+  background-color:green;
+  color: White;
+  font: inherit;
+  border: 1px solid aquamarine;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: lightgreen;
+  color: black;
+}
