@@ -22,6 +22,7 @@ const style = {
 }
 
 const person = (props) => {
+    console.log('[Person.js] rendering ...');
     // To write dynamic javascript in JSX we use {}
     return (
         <StyledDiv>

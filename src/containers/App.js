@@ -5,6 +5,14 @@ import Persons from '../components/Persons/Persons'
 
 // One way to create a component
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+
+    // you could also initialize your state here 
+    // this.state = {data: "person"} 
+  }
+
   state = {
     persons : [
       {
@@ -26,6 +34,18 @@ class App extends Component {
     otherState: "some stuff",
     showPersons: false
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    // here you should return your updated state
+    return state;
+  }
+
+  // After rendering all components, componentDidMount runs 
+  // We can cause side effects in this function i.e make http requests
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
 
   nameChangedHandler = (e, id) => {
     // console.log(e, id);
@@ -59,6 +79,8 @@ class App extends Component {
   }
 
   render(){
+    console.log('[App.js] rendering ...');
+
     let persons = null;
   
     if (this.state.showPersons) {
