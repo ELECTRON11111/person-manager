@@ -33,11 +33,6 @@ const Cockpit = (props) => {
     }, 1000)
   }, [props.showPersons]);
 
-
-  useEffect(() => {
-    
-  }, []);
-
   const classes = [];
   if (props.length <= 2){
     classes.push("red");
@@ -67,4 +62,4 @@ const Cockpit = (props) => {
   );
 }
 
-export default Cockpit;
+export default React.memo(Cockpit);
