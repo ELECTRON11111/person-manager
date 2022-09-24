@@ -4,7 +4,7 @@ const Cockpit = (props) => {
   // useEffect react hook is used to control update with functional components
   useEffect(() => {
     // This is componentDidmount and componentDidUpdate in one effect
-    console.log('[App.js] useEffect');
+    console.log('[Cockpit.js] useEffect');
     // we can cause side effects, make http requests
     // also useEffect can be used multiple times
   });
@@ -15,6 +15,12 @@ const Cockpit = (props) => {
       alert('[once] got data from server');
     }, 1000);
     // This will have similar effect as component did mount
+
+    return () => {
+      // here we can define what cleanup code we want to run before the next re-render 
+      // cleanup work is done after a component is removed.
+      console.log('[Cockpit.js] cleanup work in useEffect');
+    }
   }, [])
   
   useEffect(() => {
@@ -23,7 +29,12 @@ const Cockpit = (props) => {
     setTimeout(() => {
       alert('[update] showPersons updated');
     }, 1000)
-  }, [props.showPersons])
+  }, [props.showPersons]);
+
+
+  useEffect(() => {
+    
+  }, []);
 
   const classes = [];
   if (props.length <= 2){

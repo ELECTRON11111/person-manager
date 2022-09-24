@@ -32,7 +32,8 @@ class App extends Component {
       }
     ],
     otherState: "some stuff",
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -113,12 +114,17 @@ class App extends Component {
     return (
       // Also every tag you want to use would be nested in one div per component 
       <div className="App">
-        <Cockpit 
+        <button onClick = {() => {
+          this.setState({showCockpit: false});
+        }}>
+          Remove Cockpit
+        </button>
+        {this.state.showCockpit? <Cockpit 
           showPersons = {this.state.showPersons}
           appTitle = {this.props.title}
           length = {this.state.persons.length}
           clicked = {this.togglePersonsHandler}
-        />
+        />: null}
         {persons}
       </div>
     )

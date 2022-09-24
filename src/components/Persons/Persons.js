@@ -22,6 +22,12 @@ class Persons extends Component{
         console.log('[Persons.js] getSnapshotBeforeUpdate');
         return { message: "snapshot" };
     }
+    
+    // the lifecycle update hook runs before rendering update to the virtual DOM 
+    componentWillUnmount() {
+        console.log('[App.js] componentWillUnmount');
+    }
+
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         // runs when we're done with all the updating
