@@ -14,7 +14,8 @@ class Persons extends Component{
         // here you actually have to return true or false for the update to continue.
         //  so you have to check if your nextProps === nextState, to determine if there's need for updating.
         console.log('[Persons.js] shouldComponentUpdate');
-        return true;
+        // check the person propto determine if an update re-render is necessary
+        return nextProps.persons !== this.props.persons? true: false; 
     } 
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -25,6 +26,7 @@ class Persons extends Component{
     
     // the lifecycle update hook runs before rendering update to the virtual DOM 
     componentWillUnmount() {
+        // here we can do cleanup
         console.log('[App.js] componentWillUnmount');
     }
 
