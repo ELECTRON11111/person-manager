@@ -11,7 +11,7 @@ const Cockpit = (props) => {
 
   useEffect(() => {
     // to make this run once after page is rendered add an [] as a sencond arg to this fn
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       alert('[once] got data from server');
     }, 1000);
     // This will have similar effect as component did mount
@@ -19,6 +19,8 @@ const Cockpit = (props) => {
     return () => {
       // here we can define what cleanup code we want to run before the next re-render 
       // cleanup work is done after a component is removed.
+      // clear timeout as clean up code 
+      clearTimeout(timer);
       console.log('[Cockpit.js] cleanup work in useEffect');
     }
   }, [])
