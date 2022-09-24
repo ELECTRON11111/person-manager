@@ -47,6 +47,22 @@ class App extends Component {
     console.log('[App.js] componentDidMount');
   }
 
+  /**
+   * ===================================================================================
+   *  Lifecycle Hooks for state changes or Update
+   * ___________________________________________________________________________________
+   */
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+  
+  componentDidUpdate() {
+    // Here you can also make HTTP requests and fetch data from servers.
+    console.log('[App.js] componentDidUpdate');
+  }
+
   nameChangedHandler = (e, id) => {
     // console.log(e, id);
     // Remember to always work with copies of the arrays/objects you use, ensuring state immutability
