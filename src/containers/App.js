@@ -114,6 +114,7 @@ class App extends Component {
       // Also every tag you want to use would be nested in one div per component 
       <div className="App">
         <Cockpit 
+          showPersons = {this.state.showPersons}
           appTitle = {this.props.title}
           length = {this.state.persons.length}
           clicked = {this.togglePersonsHandler}

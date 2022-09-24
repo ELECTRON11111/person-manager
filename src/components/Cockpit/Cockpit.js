@@ -9,6 +9,12 @@ const Cockpit = (props) => {
       classes.push("bold");
     }
 
+    if(props.showPersons) {
+      document.querySelector('.button').classList.add("personsShown")
+    } else {
+      document.querySelector('.button').classList.remove("personsShown")
+    }
+
     return (
         <div>
             <h1>{props.appTitle}</h1>
