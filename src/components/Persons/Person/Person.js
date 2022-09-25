@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Aux from "../../../hoc/Auxiliary";
 import styled from 'styled-components';
 import './Person.css'
 
@@ -30,19 +31,20 @@ class Person extends Component{
         // elements directly next to each without a parent by returning an array. The catch here is that we have 
         // to add a unique "key" to each individual list item for react to identify order and location of changes
         // with lists. 
-        return [
-            <p key="i1" onClick={this.props.click}>
+        return ( 
+            <Aux>
+                <p onClick={this.props.click}>
                 I'm {this.props.name} and I'm {this.props.age} years old.
-            </p>,
-            <p key="i2">{this.props.children}</p>,
-            <input  
-                key="i3"
-                type = "text" 
-                onChange={(e) => this.props.changed(e)} 
-                value = {this.props.name}
-                style = {style}
-            />
-        ]
+                </p>
+                <p>{this.props.children}</p>
+                <input
+                    type = "text" 
+                    onChange={(e) => this.props.changed(e)} 
+                    value = {this.props.name}
+                    style = {style}
+                />
+            </Aux>
+        )
     }
 };
 
