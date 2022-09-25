@@ -24,25 +24,25 @@ const style = {
 class Person extends Component{
     render() {
         console.log('[Person.js] rendering ...');
-        // To write dynamic javascript in JSX we use {}
-        return (
-            <StyledDiv>
-                <p onClick={this.props.click}>I'm {this.props.name} and I'm {this.props.age} years old.</p>
-                
-                {/* You can also take the value inputed between the <person></person> tags with props.children property */}
-
-                <p>{this.props.children}</p>
-                {/* I set up two way binding here, it means I specifically set the value of an elem and make provision for changes */}
-
-                <input  
-                    type = "text" 
-                    onChange={(e) => this.props.changed(e)} 
-                    value = {this.props.name}
-                    style = {style}
-                />
-
-            </StyledDiv>
-        )
+        
+        // Remeber JSX is shorthand React.createElement()
+        // So basically, it is still javaScript, with that knowledge, we can render adjacent elements i.e 
+        // elements directly next to each without a parent by returning an array. The catch here is that we have 
+        // to add a unique "key" to each individual list item for react to identify order and location of changes
+        // with lists. 
+        return [
+            <p key="i1" onClick={this.props.click}>
+                I'm {this.props.name} and I'm {this.props.age} years old.
+            </p>,
+            <p key="i2">{this.props.children}</p>,
+            <input  
+                key="i3"
+                type = "text" 
+                onChange={(e) => this.props.changed(e)} 
+                value = {this.props.name}
+                style = {style}
+            />
+        ]
     }
 };
 

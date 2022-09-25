@@ -1,22 +1,22 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Person from "./Person/Person";
 
-class Persons extends Component{
+class Persons extends PureComponent{
     // updating lifecycle react hooks
     // getDerivedStateFromProps - shouldComponentUpdate - render - getSnapshotBeforeUpdate - componentDidUpdate.
 
-    static getDerivedStateFromProps(props, state) {
-        console.log('[Persons.js] getDerivedStateFromProps', props);
-        return state;
-    }
+    // static getDerivedStateFromProps(props, state) {
+    //     console.log('[Persons.js] getDerivedStateFromProps', props);
+    //     return state;
+    // }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        // here you actually have to return true or false for the update to continue.
-        //  so you have to check if your nextProps === nextState, to determine if there's need for updating.
-        console.log('[Persons.js] shouldComponentUpdate');
-        // check the person propto determine if an update re-render is necessary
-        return nextProps.persons !== this.props.persons? true: false; 
-    } 
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     // here you actually have to return true or false for the update to continue.
+    //     //  so you have to check if your nextProps === nextState, to determine if there's need for updating.
+    //     console.log('[Persons.js] shouldComponentUpdate');
+    //     // check the person propto determine if an update re-render is necessary
+    //     return nextProps.persons !== this.props.persons? true: false; 
+    // } 
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         // You could do some last minute DOM manipulation, with the prevState and prevProps
