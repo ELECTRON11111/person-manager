@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
-import Persons from '../components/Persons/Persons'
+import Persons from '../components/Persons/Persons';
+import Aux from "../hoc/Auxiliary";
+import withClass from '../hoc/withClass';
 
 // One way to create a component
 class App extends Component {
@@ -113,7 +115,7 @@ class App extends Component {
 
     return (
       // Also every tag you want to use would be nested in one div per component 
-      <div className="App">
+      <Aux>
         <button onClick = {() => {
           this.setState({showCockpit: false});
         }}>
@@ -126,9 +128,11 @@ class App extends Component {
           clicked = {this.togglePersonsHandler}
         />: null}
         {persons}
-      </div>
+      </Aux>
     )
   }
-};
+}
 
-export default App;
+// Remember withClass is not a component but rather a function that returns a component 
+// so we call that function on App to add a div with class and App as its child
+export default withClass(App, "App");

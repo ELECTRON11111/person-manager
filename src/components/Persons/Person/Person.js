@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 // import Aux from "../../../hoc/Auxiliary";
 import styled from 'styled-components';
-import './Person.css'
+import Aux from '../../../hoc/Auxiliary';
+import withClass from '../../../hoc/withClass';
+import './Person.css';
 
 const StyledDiv = styled.div`
     width: 60%;
@@ -32,7 +34,7 @@ class Person extends Component{
         // to add a unique "key" to each individual list item for react to identify order and location of changes
         // with lists. 
         return ( 
-            <React.Fragment>
+            <Aux>
                 <p onClick={this.props.click}>
                 I'm {this.props.name} and I'm {this.props.age} years old.
                 </p>
@@ -43,7 +45,7 @@ class Person extends Component{
                     value = {this.props.name}
                     style = {style}
                 />
-            </React.Fragment>
+            </Aux>
         )
     }
 };
@@ -51,4 +53,4 @@ class Person extends Component{
 /**
  * For components created with classes, the props are accessed using 'this.props'
  */
-export default Person;
+export default withClass(Person, "Person");
