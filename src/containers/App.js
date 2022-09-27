@@ -35,7 +35,8 @@ class App extends Component {
     ],
     otherState: "some stuff",
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter:0
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -73,8 +74,22 @@ class App extends Component {
     console.log(id, e.target.value);
     const Person = persons.find(person => person.id === id );
     Person.name = e.target.value;
-    this.setState({
-      persons: persons
+
+    // When you want to set a state thta depends on the old state, you don't just do it
+    // by passing this.state into it because setState is syncronous so the state you get 
+    // might not necessarily be the old state but rather a state that might have been updated by another setState call
+    // so we don't do it like this:
+    //    this.setState({
+    //        persons: persons,
+    //        changeCounter: this.state.changeCounter + 1
+    //    });
+    // instead: the setState takes a function that gives it access to the prevState and props
+
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1
+      }
     });
   }
 
