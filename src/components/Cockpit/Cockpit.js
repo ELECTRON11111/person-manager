@@ -1,16 +1,18 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 
 const Cockpit = (props) => {
+  const toggleBtnRef = useRef(null); // set initial value to be null
+  
   // useEffect react hook is used to control update with functional components
   useEffect(() => {
+    toggleBtnRef.current.click();
+  },[]);
+  
+  useEffect(() => {
     // This is componentDidmount and componentDidUpdate in one effect
-    console.log('[Cockpit.js] useEffect');
+    // to make this run once after page is rendered add an [] as a sencond arg to this fn
     // we can cause side effects, make http requests
     // also useEffect can be used multiple times
-  });
-
-  useEffect(() => {
-    // to make this run once after page is rendered add an [] as a sencond arg to this fn
     const timer = setTimeout(() => {
       alert('[once] got data from server');
     }, 1000);
@@ -57,6 +59,7 @@ const Cockpit = (props) => {
           <button
           className= {`button ${btnClass.join('')}`}
           onClick={props.clicked}
+          ref={toggleBtnRef}
           >Toggle Persons</button>
       </div>
   );
