@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types"
+
 // import Aux from "../../../hoc/Auxiliary";
 import styled from 'styled-components';
 import Aux from '../../../hoc/Auxiliary';
@@ -50,7 +52,12 @@ class Person extends Component{
     }
 };
 
-/**
- * For components created with classes, the props are accessed using 'this.props'
- */
+// We can specify the data type for the props we recieve.
+Person.propTypes = {
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func,
+    click: PropTypes.func
+};
+
 export default withClass(Person, "Person");
