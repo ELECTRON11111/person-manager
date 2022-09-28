@@ -27,6 +27,16 @@ const style = {
 }
 
 class Person extends Component{
+    constructor(props) {
+        super(props);
+        this.inputElementRef = React.createRef();
+    }
+
+    componentDidMount() {
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
+    }
+
     render() {
         console.log('[Person.js] rendering ...');
         
@@ -43,6 +53,9 @@ class Person extends Component{
                 <p>{this.props.children}</p>
                 <input
                     type = "text" 
+                    key={this.props.key}
+                    // ref={(inputEl) => {this.inputElement = inputEl}}
+                    ref={this.inputElementRef}
                     onChange={(e) => this.props.changed(e)} 
                     value = {this.props.name}
                     style = {style}
