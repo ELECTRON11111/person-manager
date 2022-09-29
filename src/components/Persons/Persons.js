@@ -44,7 +44,7 @@ class Persons extends PureComponent{
                     name = {person.name} 
                     age = {person.age} 
                     key = {person.id}
-                    // You have to create an anonymous function before passing parameters
+                    isAuth = {this.props.isAuthenticated}
                     click = {() => this.props.clicked(index)}
                     changed = {(e) => this.props.changed(e, person.id)}
                 />

@@ -5,6 +5,7 @@ import PropTypes from "prop-types"
 import styled from 'styled-components';
 import Aux from '../../../hoc/Auxiliary';
 import withClass from '../../../hoc/withClass';
+import AuthContext from '../../../context/auth-context';
 import './Person.css';
 
 const StyledDiv = styled.div`
@@ -47,6 +48,11 @@ class Person extends Component{
         // with lists. 
         return ( 
             <Aux>
+                <AuthContext.Consumer>
+                    {(context) => {
+                        return context.authenticated? <p>Authenticated!</p> : <p>Please login</p>;
+                    }}
+                </AuthContext.Consumer>
                 <p onClick={this.props.click}>
                 I'm {this.props.name} and I'm {this.props.age} years old.
                 </p>

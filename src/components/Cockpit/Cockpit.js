@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from "react";
+import AuthContext from "../../context/auth-context";
 
 const Cockpit = (props) => {
   const toggleBtnRef = useRef(null); // set initial value to be null
@@ -57,10 +58,17 @@ const Cockpit = (props) => {
           <p className= {classes.join(' ')}>this is really working.</p>
           
           <button
-          className= {`button ${btnClass.join('')}`}
-          onClick={props.clicked}
-          ref={toggleBtnRef}
+            className= {`button ${btnClass.join('')}`}
+            onClick={props.clicked}
+            ref={toggleBtnRef}
           >Toggle Persons</button>
+          <AuthContext.Consumer>
+            {context => <button 
+              onClick={context.login} 
+              className= {`button ${btnClass.join('')}`}
+            >Log In</button>
+            }
+          </AuthContext.Consumer>
       </div>
   );
 }
