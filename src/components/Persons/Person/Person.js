@@ -33,9 +33,13 @@ class Person extends Component{
         this.inputElementRef = React.createRef();
     }
 
+    // static makes it available everywhere in the file
+    static contextType = AuthContext;
+
     componentDidMount() {
         // this.inputElement.focus();
         this.inputElementRef.current.focus();
+        console.log(this.context.authenticated);
     }
 
     render() {
@@ -48,11 +52,7 @@ class Person extends Component{
         // with lists. 
         return ( 
             <Aux>
-                <AuthContext.Consumer>
-                    {(context) => {
-                        return context.authenticated? <p>Authenticated!</p> : <p>Please login</p>;
-                    }}
-                </AuthContext.Consumer>
+                {this.context.authenticated? <p>Authenticated!</p>: <p>Please login</p>}
                 <p onClick={this.props.click}>
                 I'm {this.props.name} and I'm {this.props.age} years old.
                 </p>

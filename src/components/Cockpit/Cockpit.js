@@ -1,9 +1,11 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useContext} from "react";
 import AuthContext from "../../context/auth-context";
 
 const Cockpit = (props) => {
   const toggleBtnRef = useRef(null); // set initial value to be null
-  
+  const authContext = useContext(AuthContext);
+
+
   // useEffect react hook is used to control update with functional components
   useEffect(() => {
     toggleBtnRef.current.click();
@@ -62,13 +64,10 @@ const Cockpit = (props) => {
             onClick={props.clicked}
             ref={toggleBtnRef}
           >Toggle Persons</button>
-          <AuthContext.Consumer>
-            {context => <button 
-              onClick={context.login} 
-              className= {`button ${btnClass.join('')}`}
-            >Log In</button>
-            }
-          </AuthContext.Consumer>
+          <button 
+            onClick={authContext.login} 
+            className= {`button ${btnClass.join('')}`}
+          >Log In</button>
       </div>
   );
 }
